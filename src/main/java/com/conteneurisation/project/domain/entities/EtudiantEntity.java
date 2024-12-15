@@ -27,5 +27,29 @@ public class EtudiantEntity {
     public void prePersist() {
         this.creationDate = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
     }
+
+    public Long getIdEtudiant() {
+        return idEtudiant;
+    }
+
+    public void setIdEtudiant(Long idEtudiant) {
+        this.idEtudiant = idEtudiant;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
 

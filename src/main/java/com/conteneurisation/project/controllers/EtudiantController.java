@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-
+@CrossOrigin(origins = "*")
 @RestController
 public class EtudiantController {
     private final EtudiantService etudiantService;
@@ -42,12 +42,12 @@ public class EtudiantController {
         }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     @PutMapping(path = "/Etudiants/{idEtudiant}" )
-    public ResponseEntity<EtudiantDto> fullUpdateEtudiantById(@PathVariable Long idEtudiant,@RequestBody EtudiantDto etudiant) {
+    public ResponseEntity<EtudiantDto> fullUpdateEtudiantById(@PathVariable Long idEtudiant,@RequestBody EtudiantDto etudiantDto) {
         if(!etudiantService.isexists(idEtudiant)){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        etudiant.setIdEtudiant(idEtudiant);
-        EtudiantEntity etudiantEntity = etudiantMapper.mapFrom(etudiant);
+        etudiantDto.setIdEtudiant(idEtudiant);
+        EtudiantEntity etudiantEntity = etudiantMapper.mapFrom(etudiantDto);
         EtudiantEntity savedEtudiantEntity = etudiantService.save(etudiantEntity);
         return new ResponseEntity<>(etudiantMapper.mapTo(savedEtudiantEntity), HttpStatus.OK);
     }
