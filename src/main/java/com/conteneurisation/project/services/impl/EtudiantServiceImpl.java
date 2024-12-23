@@ -49,7 +49,6 @@ public class EtudiantServiceImpl implements EtudiantService {
             return etudiantRepository.save(existingEtudiant);
         }).orElseThrow(() -> new RuntimeException("Etudiant not found"));
     }
-
     @Override
     public void deleteEtudiant(Long idEtudiant) {
         etudiantRepository.deleteById(idEtudiant);
