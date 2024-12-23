@@ -54,5 +54,4 @@ public class EtudiantServiceImpl implements EtudiantService {
     public void deleteEtudiant(Long idEtudiant) {
         etudiantRepository.deleteById(idEtudiant);
     }
-
 }
